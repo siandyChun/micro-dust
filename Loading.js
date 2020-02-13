@@ -1,5 +1,5 @@
 import React from 'react';
-import { Stylesheet, Text, View} from 'react-native';
+import { StyleSheet, Text, View } from 'react-native';
 
 //로딩페이지
 export default function Loading(){
@@ -8,17 +8,18 @@ export default function Loading(){
     </View>
 }
 
-
-
-//스타일
-const styles = Stylesheet.create({
-
-    container: {
+const styles = StyleSheet.create({
+    container : {
         flex: 1,
+        justifyContent: "flex-end",
+        paddingHorizontal: 50,
+        paddingVertical: 200,
+        backgroundColor: "#e5e5e5"
     },
-
+    
     text : {
-        fontSize: 50
+        fontWeight : "bold",
+        color : "#323233",
+        fontSize : 30
     }
-
-});
+})
