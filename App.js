@@ -13,9 +13,11 @@ export default class extends React.Component {
     isLoding: true
   }
 
-  getDust = async(place) => {
-    const dust = await axios.get(`https://api.waqi.info/feed/beijing/?token=e996809a82c690f46c3be36b7dab8be2a21f7598
-      `);
+  getDust = async(latitude, longitude) => {
+    const dust = await axios.get(`https://api.waqi.info/feed/beijing/?token=e996809a82c690f46c3be36b7dab8be2a21f7598`);
+    
+    //const dust = await axios.get(`https://api.waqi.info/feed/geo::37.477821;:&{}/?token=:e996809a82c690f46c3be36b7dab8be2a21f7598`);
+
     console.log(dust);
   }
 
@@ -24,8 +26,15 @@ export default class extends React.Component {
 
     console.log(latitude, longitude,);
     const place = await Location.reverseGeocodeAsync({latitude, longitude});
-    //console.log(city);
-    console.log(place[0].city);
+    console.log(city);
+    const city = place[0].city;
+    console.log(city);
+
+    this.setState({
+      isLoding:false,
+      city
+    })
+
   }
 
   //비동기 처리방식
@@ -52,8 +61,8 @@ export default class extends React.Component {
   }
 
   render() {
-    const {isLoding} = this.state;
-    return isLoding ?<Loading /> : <Dust />;
+    const {isLoding, city} = this.state;
+    return isLoding ?<Loading /> : <Dust city={city} />;
   }
 
 }

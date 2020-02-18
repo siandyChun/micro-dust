@@ -2,9 +2,11 @@ import React from "react";
 import { StyleSheet, View, Text } from "react-native";
 
 
-export default function Dust(){
+export default function Dust({city}){
     return <View style={styles.container}>
-        <Text style={styles.dust}>테스트임다</Text>
+        <Text style={styles.dust}>{city}</Text>
+        <Text style={styles.dust}>여기에 미세먼지 농도</Text>
+
     </View>
 }
 
